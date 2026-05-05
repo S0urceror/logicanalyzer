@@ -71,8 +71,8 @@ namespace LogicAnalyzer.Dialogs
             else
             {
                 captureChannels = captureChannels.OrderBy(c => c.ChannelName == null ? 1:0)
-                                                 .ThenBy(c => Regex.Match(c.ChannelName, @"\w").Success ? Regex.Match(c.ChannelName, @"\w").Value : "")
-                                                 .ThenBy(c => Regex.Match(c.ChannelName, @"\d+").Success ? Int16.Parse(Regex.Match(c.ChannelName, @"\d+").Value) : (short)99)
+                                                 .ThenBy(c => c.ChannelName != null && Regex.Match(c.ChannelName, @"\w").Success ? Regex.Match(c.ChannelName, @"\w").Value : "")
+                                                 .ThenBy(c => c.ChannelName != null && Regex.Match(c.ChannelName, @"\d+").Success ? Int16.Parse(Regex.Match(c.ChannelName, @"\d+").Value) : (short)99)
                                                  .ToArray();
             }
 
@@ -418,8 +418,8 @@ namespace LogicAnalyzer.Dialogs
                 {
                     captureChannels = captureChannels
                         .OrderBy(c => c.ChannelName == null ? 1:0)
-                        .ThenBy(c => Regex.Match(c.ChannelName, @"\w").Success ? Regex.Match(c.ChannelName, @"\w").Value : "")
-                        .ThenBy(c => Regex.Match(c.ChannelName, @"\d+").Success ? Int16.Parse(Regex.Match(c.ChannelName, @"\d+").Value) : (short)99)
+                        .ThenBy(c => c.ChannelName != null && Regex.Match(c.ChannelName, @"\w").Success ? Regex.Match(c.ChannelName, @"\w").Value : "")
+                        .ThenBy(c => c.ChannelName != null && Regex.Match(c.ChannelName, @"\d+").Success ? Int16.Parse(Regex.Match(c.ChannelName, @"\d+").Value) : (short)99)
                         .ToArray();
                     ReInitializeControlArrays();
                     chkSortByChannel.IsChecked = false;
